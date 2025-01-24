@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation Example</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="username">Hello, User!</h1>
+  <input type="text" id="input-username" placeholder="Enter your name">
+  <button id="submit-username">Submit</button>
+  
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <script>
+    
+    document.getElementById('submit-username').addEventListener('click', () => {
+      const username = document.getElementById('input-username').value;
+      document.getElementById('username').textContent = `Hello, ${username || 'User'}!`;
+    });
+
+
+    const names = ['Alice', 'Bob', 'Charlie', 'Diana', 'Ethan'];
+    const tableBody = document.querySelector('#data-table tbody');
+
+    names.forEach((name, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${index + 1}</td><td>${name}</td>`;
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>
